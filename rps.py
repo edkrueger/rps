@@ -1,13 +1,20 @@
 from random import randint
 
-def validate_choice(choice):
-    if not choice.lower() in {"r", "p", "s"}:
-        raise ValueError("Must be one of R, P or S!")
-        
-def prompt_choice():
+def is_valid(choice):
     
-    choice = input("Choose R/P/S!")   
-    validate_choice(choice)
+    if choice == None:
+        return False
+
+    if choice.lower() in {"r", "p", "s"}:
+        return True
+
+    return False
+
+def prompt_choice():
+    choice = None
+
+    while not is_valid(choice):
+        choice = input("Choose R/P/S!")   
     return choice
 
 def play():
